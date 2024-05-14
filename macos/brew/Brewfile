@@ -1,0 +1,37 @@
+tap "homebrew/bundle"
+tap "homebrew/services"
+tap "koekeishiya/formulae"
+tap "microsoft/git"
+# Distributed revision control system
+brew "git"
+# HTTP/2 C Library
+brew "libnghttp2"
+# C99 library which implements a VT220 or xterm terminal emulator
+brew "libvterm"
+# Powerful, lightweight programming language
+brew "lua"
+# Fast, highly customisable system info script
+brew "neofetch"
+# Ambitious Vim-fork focused on extensibility and agility
+brew "neovim"
+# Platform built on V8 to build network applications
+brew "node"
+# Cryptography and SSL/TLS Toolkit
+brew "openssl@3", link: false
+# Cross-shell prompt for astronauts
+brew "starship"
+# Display directories as trees (with optional color/HTML output)
+brew "tree"
+# Simple hotkey-daemon for macOS.
+brew "koekeishiya/formulae/skhd"
+# A tiling window manager for macOS based on binary space partitioning.
+brew "koekeishiya/formulae/yabai"
+# Reimagine your terminal
+cask "fig"
+cask "git-credential-manager-core"
+# Terminal emulator as alternative to Apple's Terminal app
+cask "iterm2"
+# Command-line shell and scripting language
+cask "powershell"
+# Control your tools with a few keystrokes
+cask "raycast"

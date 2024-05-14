@@ -1,0 +1,12 @@
+[user]
+	name = Joshua Saputil
+	email = joshuasaputil97@hotmail.com
+[color]
+	ui = auto
+[core]
+	editor = nvim
+[credential]
+	helper = /usr/local/bin/git-credential-manager
+	credentialStore = cache
+[credential "https://dev.azure.com"]
+	useHttpPath = true

@@ -1,0 +1,247 @@
+#format = '$all$directory$character'
+format = """
+[┌─](bold white)\
+$username\
+$hostname\
+$localip\
+$shlvl\
+$singularity\
+$kubernetes\
+$directory\
+$fill\
+$jobs\
+$battery\
+$time\
+$status\
+$os\
+$shell\
+$line1
+[│](bold white)\
+$fossil_branch\
+$git_branch\
+$git_commit\
+$git_state\
+$git_metrics\
+$git_status\
+$hg_branch\
+$env_var\
+$line2
+[└─](bold white)\
+$character\
+"""
+
+[env_var.PNPPSHOST]
+format = '[-\[ ](bold white)[$env_value](bold purple)'
+
+[env_var.PNPPSSITE]
+format = '[$env_value](bold red)[ \]](bold white)'
+
+[character]
+success_symbol = '[❯❯](bold green) '
+error_symbol = '[✗](bold red) '
+
+[shell]
+bash_indicator = ' bash'
+zsh_indicator = ' zsh'
+fish_indicator = ' fish'
+powershell_indicator = ' pwsh'
+unknown_indicator = ' mystery shell'
+style = 'cyan bold'
+disabled = false
+
+[fill]
+symbol = ' '
+style = 'green'
+
+[directory]
+format = '[-\[](bold white)[$path](bold cyan)[$read_only]($read_only_style)[\]](bold white) '
+truncation_length = 8
+truncation_symbol = '…/'
+read_only = '🔒'
+read_only_style = 'red' 
+ 
+[battery]
+format = '[$symbol$percentage]($style) '
+full_symbol = 'Full '
+charging_symbol = 'Charge '
+discharging_symbol = ' '
+
+[username]
+style_user = 'bold yellow'
+style_root = 'black bold'
+format = '[\[](bold white)[$user]($style)'
+disabled = false
+show_always = true
+
+[hostname]
+ssh_only = false
+format = '[$ssh_symbol](bold blue)[@](bold red)[$hostname](bold green)[\]](bold white)'
+trim_at = '.local'
+disabled = false
+
+[git_branch]
+format = '[ \[ ](bold white)[$symbol$branch(:$remote_branch)]($style) '
+symbol = ' '
+truncation_length = 4
+truncation_symbol = ''
+#ignore_branches = ['master', 'main']
+
+[git_status]
+format = '([$all_status$ahead_behind$staged]($style) [\]](bold white))'
+conflicted = '='
+ahead = '⇡${count}'
+behind = '⇣${count}'
+diverged = '⇕⇡${ahead_count}⇣${behind_count}'
+up_to_date = '✓'
+untracked = '?'
+stashed = '$'
+modified = '!'
+staged = '[++\($count\)](green)'
+renamed = '»'
+deleted = '✘'
+
+[fossil_branch]
+symbol = " "
+
+[hg_branch]
+symbol = " "
+
+[time]
+disabled = false
+format = '[\[ $time \]]($style) '
+time_format = '%T'
+utc_time_offset = '+2'
+
+[[battery.display]]
+threshold = 100
+style = 'bold green'
+
+[aws]
+symbol = "  "
+
+[buf]
+symbol = " "
+
+[c]
+symbol = " "
+
+[conda]
+symbol = " "
+
+[dart]
+symbol = " "
+
+[docker_context]
+symbol = " "
+
+[elixir]
+symbol = " "
+
+[elm]
+symbol = " "
+
+[golang]
+symbol = " "
+
+[guix_shell]
+symbol = " "
+
+[haskell]
+symbol = " "
+
+[haxe]
+symbol = "⌘ "
+
+[java]
+symbol = " "
+
+[julia]
+symbol = " "
+
+[lua]
+symbol = " "
+
+[memory_usage]
+symbol = " "
+
+[meson]
+symbol = "喝 "
+
+[nim]
+symbol = " "
+
+[nix_shell]
+symbol = " "
+
+[nodejs]
+symbol = " "
+
+[os]
+format = "[$symbol]($style)"
+style = "bold blue"
+disabled = false
+
+[os.symbols]
+Alpaquita = " "
+Alpine = " "
+Amazon = " "
+Android = " "
+Arch = " "
+Artix = " "
+CentOS = " "
+Debian = " "
+DragonFly = " "
+Emscripten = " "
+EndeavourOS = " "
+Fedora = " "
+FreeBSD = " "
+Garuda = "﯑ "
+Gentoo = " "
+HardenedBSD = "ﲊ "
+Illumos = " "
+Linux = " "
+Mabox = " "
+Macos = " "
+Manjaro = " "
+Mariner = " "
+MidnightBSD = " "
+Mint = " "
+NetBSD = " "
+NixOS = " "
+OpenBSD = " "
+openSUSE = " "
+OracleLinux = " "
+Pop = " "
+Raspbian = " "
+Redhat = " "
+RedHatEnterprise = " "
+Redox = " "
+Solus = "ﴱ "
+SUSE = " "
+Ubuntu = " "
+Unknown = " "
+Windows = " "
+
+[package]
+symbol = " "
+
+[pijul_channel]
+symbol = "🪺 "
+
+[python]
+symbol = " "
+
+[rlang]
+symbol = "ﳒ "
+
+[ruby]
+symbol = " "
+
+[rust]
+symbol = " "
+
+[scala]
+symbol = " "
+
+[spack]
+symbol = "🅢 "
