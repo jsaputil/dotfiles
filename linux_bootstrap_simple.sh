@@ -59,7 +59,7 @@ if ! command -v zsh &>/dev/null; then
 	# If not installed, install Zsh
 	sudo apt update
 	sudo apt install zsh -y
-	sudo chsh -s /bin/zsh
+	sudo chsh -s /bin/zsh jsaputil
 	echo "Zsh has been installed."
 else
 	# If installed, provide feedback
