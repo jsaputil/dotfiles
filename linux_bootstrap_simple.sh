@@ -17,7 +17,6 @@ mkdir -p ~/.config
 # Check if curl is installed
 if ! command -v curl &>/dev/null; then
 	# If not installed, install curl
-	sudo apt update
 	sudo apt install curl -y
 	echo "curl has been installed."
 else
@@ -27,7 +26,6 @@ fi
 
 if ! command -v neofetch &>/dev/null; then
 	# If not installed, install curl
-	sudo apt update
 	sudo apt install neofetch -y
 	echo "neofetch has been installed."
 else
@@ -38,7 +36,6 @@ fi
 # Install git
 if ! command -v git &>/dev/null; then
 	# If not installed, install git
-	sudo apt update
 	sudo apt install git -y
 	echo "Git has been installed."
 else
@@ -57,27 +54,12 @@ fi
 # Setting up Zsh as main shell
 if ! command -v zsh &>/dev/null; then
 	# If not installed, install Zsh
-	sudo apt update
 	sudo apt install zsh -y
 	sudo chsh -s /bin/zsh jsaputil
 	echo "Zsh has been installed."
 else
 	# If installed, provide feedback
 	echo "Zsh is already installed."
-fi
-
-# Setting up Neovim as main editor
-if ! command -v neovim &>/dev/null; then
-	# If not installed, install neovim
-	curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim.appimage
-	chmod u+x nvim.appimage
-	sudo mv nvim.appimage /usr/local/bin/nvim
-	sudo ln -s /usr/local/bin/nvim /usr/bin/nvim
-	sudo apt install build-essential
-	echo "neovim has been installed."
-else
-	# If installed, provide feedback
-	echo "neovim is already installed."
 fi
 
 # Symlink .zshrc
