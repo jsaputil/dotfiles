@@ -12,6 +12,7 @@ REPO_URL="https://github.com/jsaputil/dotfiles.git"
 
 # Updating apt repositories
 sudo apt update -y && sudo apt upgrade -y
+mkdir -p ~/.config
 
 # Check if curl is installed
 if ! command -v curl &>/dev/null; then
@@ -67,9 +68,12 @@ fi
 
 # Setting up Neovim as main editor
 if ! command -v neovim &>/dev/null; then
-	# If not installed, install curl
-	sudo apt update
-	sudo apt install neovim -y
+	# If not installed, install neovim
+	curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim.appimage
+	chmod u+x nvim.appimage
+	sudo mv nvim.appimage /usr/local/bin/nvim
+	sudo ln -s /usr/local/bin/nvim /usr/bin/nvim
+	sudo apt install build-essential
 	echo "neovim has been installed."
 else
 	# If installed, provide feedback
@@ -171,15 +175,8 @@ cd ~/.local/share/fonts && curl -fLO https://github.com/ryanoasis/nerd-fonts/raw
 
 # Symlink neovim config directory
 if [ -d "~/.dotfiles/common/neovim/neovim" ]; then
-	# Check if nvim exists
-	if [ -d "~/.config/nvim" ]; then
-		# If .zshrc exists in home directory, remove it
-		rm -d "~/.config/nvim"
-		echo "Removed existing $HOME/.config/nvim"
-	fi
-
 	# Create symlink
-	ln -s "~/.dotfiles/common/neovim/neovim" "~/.config/nvim" --force
+	ln -sd "~/.dotfiles/common/neovim/neovim*" "~/.config/nvim" --force
 	echo "Linked ~/.dotfiles/common/neovim/neovim to ~/.config/nvim"
 else
 	echo "~/.dotfiles/common/neovim/neovim directory not found. Please ensure it exists."
