@@ -81,7 +81,7 @@ else
 fi
 
 # Symlink .zshrc
-if [ -f "~/.dotfiles/linux/.zshrc" ]; then
+if [ -f ~/.dotfiles/linux/.zshrc ]; then
 	# Check if .zshrc exists
 	if [ -f "~/.zshrc" ]; then
 		# If .zshrc exists in home directory, remove it
