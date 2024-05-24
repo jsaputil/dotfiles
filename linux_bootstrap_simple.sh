@@ -169,10 +169,10 @@ echo "Created symlink for starship.toml"
 mkdir -p ~/.local/share/fonts
 cd ~/.local/share/fonts && curl -fLO https://github.com/ryanoasis/nerd-fonts/raw/HEAD/patched-fonts
 
-# Symlink neovim config
-if [ -f "~/.dotfiles/common/neovim/neovim" ]; then
+# Symlink neovim config directory
+if [ -d "~/.dotfiles/common/neovim/neovim" ]; then
 	# Check if nvim exists
-	if [ -f "~/.config/nvim" ]; then
+	if [ -d "~/.config/nvim" ]; then
 		# If .zshrc exists in home directory, remove it
 		rm -d "~/.config/nvim"
 		echo "Removed existing $HOME/.config/nvim"
@@ -182,6 +182,6 @@ if [ -f "~/.dotfiles/common/neovim/neovim" ]; then
 	ln -s "~/.dotfiles/common/neovim/neovim" "~/.config/nvim" --force
 	echo "Linked ~/.dotfiles/common/neovim/neovim to ~/.config/nvim"
 else
-	echo "~/.dotfiles/common/neovim/neovim not found. Please ensure it exists."
+	echo "~/.dotfiles/common/neovim/neovim directory not found. Please ensure it exists."
 fi
 
