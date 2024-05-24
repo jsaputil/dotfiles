@@ -65,6 +65,17 @@ else
 	echo "Zsh is already installed."
 fi
 
+# Setting up Neovim as main editor
+if ! command -v neovim &>/dev/null; then
+	# If not installed, install curl
+	sudo apt update
+	sudo apt install neovim -y
+	echo "neovim has been installed."
+else
+	# If installed, provide feedback
+	echo "neovim is already installed."
+fi
+
 # Symlink .zshrc
 if [ -f "~/.dotfiles/linux/.zshrc" ]; then
 	# Check if .zshrc exists
@@ -80,6 +91,7 @@ if [ -f "~/.dotfiles/linux/.zshrc" ]; then
 else
 	echo "~/.dotfiles/linux/.zshrc not found. Please ensure it exists."
 fi
+
 
 # Check if Oh My Zsh is installed
 if [ ! -d "$HOME/.oh-my-zsh" ]; then
@@ -156,3 +168,20 @@ echo "Created symlink for starship.toml"
 # Download nerd-fonts
 mkdir -p ~/.local/share/fonts
 cd ~/.local/share/fonts && curl -fLO https://github.com/ryanoasis/nerd-fonts/raw/HEAD/patched-fonts
+
+# Symlink neovim config
+if [ -f "~/.dotfiles/common/neovim/neovim" ]; then
+	# Check if nvim exists
+	if [ -f "~/.config/nvim" ]; then
+		# If .zshrc exists in home directory, remove it
+		rm -d "~/.config/nvim"
+		echo "Removed existing $HOME/.config/nvim"
+	fi
+
+	# Create symlink
+	ln -s "~/.dotfiles/common/neovim/neovim" "~/.config/nvim" --force
+	echo "Linked ~/.dotfiles/common/neovim/neovim to ~/.config/nvim"
+else
+	echo "~/.dotfiles/common/neovim/neovim not found. Please ensure it exists."
+fi
+
